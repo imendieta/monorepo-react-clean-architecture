@@ -1,0 +1,4 @@
+{
+    "extends": "@monorepo-clean-architecture/typescript/tsconfig.expo.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx", "index.ts"],
+}

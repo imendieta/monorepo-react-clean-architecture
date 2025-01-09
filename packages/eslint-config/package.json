@@ -1,0 +1,13 @@
+{
+    "name": "@monorepo-clean-architecture/eslint-config",
+    "version": "0.1.0",
+    "main": "index.js",
+    "devDependencies": {
+        "@typescript-eslint/parser": "^8.18.0",
+        "@typescript-eslint/eslint-plugin": "^8.18.0",
+        "eslint-config-expo": "^8.0.1",
+        "eslint": "^9.15.0",
+        "eslint-plugin-react-hooks": "^5.0.0",
+        "eslint-plugin-react-refresh": "^0.4.14"
+    }
+}

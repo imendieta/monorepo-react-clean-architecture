@@ -1,0 +1,12 @@
+{
+    "name": "@monorepo-clean-architecture/typescript",
+    "version": "0.1.0",
+    "scripts": {
+        "build": "tsc --project tsconfig.build.json"
+    },
+    "devDependencies": {
+        "@monorepo-clean-architecture/eslint-config": "*",
+        "@monorepo-clean-architecture/prettier-config": "*",
+        "typescript": "^5.7.2"
+    }
+}

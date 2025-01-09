@@ -1,0 +1,19 @@
+{
+  "private":true,
+  "name": "monorepo-clean-architecture",
+  "engines": {
+    "node": "^18.9.1"
+  },
+  "packageManager": "npm@9.8.1",
+  "author": "imendieta.aur@gmail.com",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
+  }
+}
