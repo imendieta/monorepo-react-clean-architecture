@@ -1,20 +1,30 @@
+import { AsyncStorageFunctionResult } from "@monorepo-clean-architecture/storage-config";
 import { NotificationProjection } from "../../../projection/model/notification";
 import { NotificationView } from "../../../projection/model/notificationView";
 
-interface ViewNotificationFunction {
-  (): Promise<NotificationProjection[]>;
+interface ViewNotificationFunctionArgs {
+  readonly storage: AsyncStorageFunctionResult<NotificationProjection[]>;
 }
 
-const viewNotifications: ViewNotificationFunction = async () => {
-  const storageNotification = (await JSON.parse(
-    localStorage.getItem("notifications") || "[]",
-  )) as NotificationProjection[];
+interface ViewNotificationFunction {
+  (args: ViewNotificationFunctionArgs): () => Promise<NotificationProjection[]>;
+}
 
-  return storageNotification;
-};
+const viewNotifications: ViewNotificationFunction =
+  ({ storage }) =>
+  async () =>
+    await storage.get();
 
-const inMemoryNotificationView: NotificationView = {
-  viewNotifications,
-};
+interface InMemoryNotificationViewFunctionArgs {
+  readonly storage: AsyncStorageFunctionResult<NotificationProjection[]>;
+}
+
+interface InMemoryNotificationViewFunction {
+  (args: InMemoryNotificationViewFunctionArgs): NotificationView;
+}
+
+const inMemoryNotificationView: InMemoryNotificationViewFunction = ({ storage }) => ({
+  viewNotifications: viewNotifications({ storage }),
+});
 
 export { inMemoryNotificationView };

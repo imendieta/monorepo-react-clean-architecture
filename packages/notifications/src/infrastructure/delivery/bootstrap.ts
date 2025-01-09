@@ -1,3 +1,4 @@
+import { asyncStorage } from "@monorepo-clean-architecture/storage-config";
 import {
   CREATE_NOTIFICATION,
   createNotificationHandler,
@@ -16,6 +17,9 @@ import {
 import { inMemoryNotification } from "../domain/model/inMemoryNotification";
 import { inMemoryNotificationView } from "../projection/model/InMemoryNotificationView";
 import { Query, Command } from "@monorepo-clean-architecture/typescript";
+import { Notification } from "../../domain/model/notification";
+
+const STORAGE_KEY = "notifications";
 
 interface BootstrapFunctionResult {
   viewNotification: Query<ViewNotificationHandlerFunctionResult>;
@@ -28,8 +32,9 @@ interface BootstrapFunction {
 }
 
 const bootstrap: BootstrapFunction = () => {
-  const view = inMemoryNotificationView;
-  const repository = inMemoryNotification;
+  const storage = asyncStorage<Notification[]>({ storageKey: STORAGE_KEY });
+  const view = inMemoryNotificationView({ storage });
+  const repository = inMemoryNotification({ storage });
 
   return {
     viewNotification: { event: VIEW_NOTIFICATION, query: viewNotificationHandler({ view }) },

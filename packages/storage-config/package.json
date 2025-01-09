@@ -1,5 +1,5 @@
 {
-    "name": "@monorepo-clean-architecture/notification",
+    "name": "@monorepo-clean-architecture/storage-config",
     "version": "0.1.0",
     "main": "dist/index.js",
     "scripts": {
@@ -7,11 +7,7 @@
         "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
     },
     "dependencies": {
-        "@tanstack/react-query": "^5.62.7",
-        "@monorepo-clean-architecture/expo-config": "^0.1.0",
-        "@monorepo-clean-architecture/react-native": "^0.1.0",
-        "@monorepo-clean-architecture/storage-config": "^0.1.0",
-        "uuid": "^11.0.3"
+        "@react-native-async-storage/async-storage": "^2.1.0"
     },
     "devDependencies": {
         "@monorepo-clean-architecture/prettier-config": "*",

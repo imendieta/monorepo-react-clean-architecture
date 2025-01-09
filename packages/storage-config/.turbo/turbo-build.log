@@ -1,0 +1,5 @@
+
+
+> @monorepo-clean-architecture/storage-config@0.1.0 build
+> tsc --project tsconfig.build.json
+

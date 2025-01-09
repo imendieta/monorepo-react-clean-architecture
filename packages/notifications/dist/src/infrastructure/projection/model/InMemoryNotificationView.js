@@ -1,8 +1,5 @@
-const viewNotifications = async () => {
-    const storageNotification = (await JSON.parse(localStorage.getItem("notifications") || "[]"));
-    return storageNotification;
-};
-const inMemoryNotificationView = {
-    viewNotifications,
-};
+const viewNotifications = ({ storage }) => async () => await storage.get();
+const inMemoryNotificationView = ({ storage }) => ({
+    viewNotifications: viewNotifications({ storage }),
+});
 export { inMemoryNotificationView };

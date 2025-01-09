@@ -1,16 +1,15 @@
-const NOTIFICATION_KEY = "notifications";
-const createNotification = async (notification) => {
-    const listNotifications = JSON.parse(localStorage.getItem(NOTIFICATION_KEY) || "[]");
+const createNotification = (storage) => async (notification) => {
+    const listNotifications = await storage.get();
     const updateNotifications = [...listNotifications, notification];
-    localStorage.setItem(NOTIFICATION_KEY, JSON.stringify(updateNotifications));
+    await storage.save(updateNotifications);
 };
-const deleteNotification = async (notificationId) => {
-    const listNotifications = JSON.parse(localStorage.getItem(NOTIFICATION_KEY) || "[]");
+const deleteNotification = (storage) => async (notificationId) => {
+    const listNotifications = await storage.get();
     const removeNotifications = listNotifications.filter((item) => item.id !== notificationId);
-    localStorage.setItem(NOTIFICATION_KEY, JSON.stringify(removeNotifications));
+    await storage.save(removeNotifications);
 };
-const inMemoryNotification = {
-    createNotification,
-    deleteNotification,
-};
+const inMemoryNotification = ({ storage }) => ({
+    createNotification: createNotification(storage),
+    deleteNotification: deleteNotification(storage),
+});
 export { inMemoryNotification };
