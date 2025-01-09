@@ -24,10 +24,10 @@ interface UseDeleteNotificationFunction {
 
 const useDeleteNotification: UseDeleteNotificationFunction = ({ context }) => {
   const mutation = useMutation({
-    mutationKey: [event],
+    mutationKey: event,
     mutationFn: async (notificationId: string) => command(notificationId),
     onSuccess: () => {
-      context.invalidateQueries({ queryKey: [invalidationEvent] });
+      context.invalidateQueries({ queryKey: invalidationEvent });
     },
   });
 

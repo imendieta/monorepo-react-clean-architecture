@@ -37,9 +37,9 @@ const bootstrap: BootstrapFunction = () => {
   const repository = inMemoryNotification({ storage });
 
   return {
-    viewNotification: { event: VIEW_NOTIFICATION, query: viewNotificationHandler({ view }) },
-    createNotification: { event: CREATE_NOTIFICATION, command: createNotificationHandler({ repository }) },
-    deleteNotification: { event: DELETE_NOTIFICATION, command: deleteNotificationHandler({ repository }) },
+    viewNotification: { event: [VIEW_NOTIFICATION], query: viewNotificationHandler({ view }) },
+    createNotification: { event: [CREATE_NOTIFICATION], command: createNotificationHandler({ repository }) },
+    deleteNotification: { event: [DELETE_NOTIFICATION], command: deleteNotificationHandler({ repository }) },
   };
 };
 

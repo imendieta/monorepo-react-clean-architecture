@@ -32,10 +32,10 @@ interface UseCreateNotificationFunction {
 const useCreateNotification: UseCreateNotificationFunction = ({ context }) => {
   const notificationId = uuid();
   const mutation = useMutation({
-    mutationKey: [event],
+    mutationKey: event,
     mutationFn: async (notification: Notification) => command(notification),
     onSuccess: () => {
-      context.invalidateQueries({ queryKey: [invalidationEvent] });
+      context.invalidateQueries({ queryKey: invalidationEvent });
     },
   });
 

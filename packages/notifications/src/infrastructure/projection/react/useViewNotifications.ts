@@ -7,7 +7,7 @@ const {
 
 const useViewNotifications = () =>
   useQuery({
-    queryKey: [event],
+    queryKey: event,
     queryFn: async () => await query(),
     refetchOnWindowFocus: false,
     retry: false,

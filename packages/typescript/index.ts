@@ -1,10 +1,10 @@
 type Query<T> = {
-  event: string;
+  event: string[];
   query: T;
 };
 
 type Command<T> = {
-  event: string;
+  event: string[];
   command: T;
 };
 
