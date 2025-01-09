@@ -4,7 +4,8 @@ import { NotificationRepository } from "../../../domain/model/notificationReposi
 
 const createNotification =
   (storage: AsyncStorageFunctionResult<Notification[]>) => async (notification: Notification) => {
-    const listNotifications = await storage.get();
+    console.log("🚀 ~ notification:", notification);
+    const listNotifications = (await storage.get()) || [];
     const updateNotifications = [...listNotifications, notification];
     await storage.save(updateNotifications);
   };
