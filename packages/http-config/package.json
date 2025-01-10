@@ -1,0 +1,14 @@
+{
+    "name": "@monorepo-clean-architecture/http-config",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc --project tsconfig.build.json",
+        "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    },
+    "devDependencies": {
+        "@monorepo-clean-architecture/prettier-config": "*",
+        "@monorepo-clean-architecture/eslint-config": "*",
+        "@monorepo-clean-architecture/typescript": "*"
+    }
+}
